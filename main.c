@@ -10,6 +10,8 @@
 
 bool countChar(char * filename, int * counts, int size);
 void printCounts(int * counts, int size);
+bool addFile(char * filename, int * sum);
+bool writeSum(char * filename, int sum);
 
 int main(int argc, char * * argv) {
     if (argc < 2) {
