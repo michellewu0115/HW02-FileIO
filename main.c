@@ -14,8 +14,8 @@ bool addFile(char * filename, int * sum);
 bool writeSum(char * filename, int sum);
 
 int main(int argc, char * * argv) {
-    if (argc < 2) {
-        printf("Usage: %s <filename>\n", argv[0]);
+    if (argc < 3) {
+        printf("Usage: %s <char filename> <int filename>\n", argv[0]);
         return EXIT_FAILURE;
     }
 
@@ -28,7 +28,7 @@ int main(int argc, char * * argv) {
     printCounts(charCounts, 256);
 
     int sum = 0;
-    if (!addFile(argv[1], &sum)) {
+    if (!addFile(argv[2], &sum)) {
         printf("Failed to open file for integer addition.\n");
         return EXIT_FAILURE;
     }
@@ -37,7 +37,5 @@ int main(int argc, char * * argv) {
         printf("Failed to write sum to output file.\n");
         return EXIT_FAILURE;
     }
-
-    printf("Sum written to sum_output.txt\n");
     return EXIT_SUCCESS;
 }

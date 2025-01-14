@@ -13,27 +13,31 @@ hw02: $(OBJS)
 	$(GCC) $(TESTFALGS) $(OBJS) -o hw02
 
 .c.o: 
-	$(GCC) $(TESTFALGS) -c $*.c 
+	$(GCC) $(TESTFALGS) -c solved/$*.c 
 
 testall: test1 test2 test3 test4
 
 test1: hw02
-	./hw02 inputs/2016 > output16
-	diff output16 expected/expected16
+	./hw02 inputs_char/2016 inputs_int/input1 > output16
+	diff output16 expected_char/expected16
+	diff sum_output.txt expected_int/expected1
 
 test2: hw02
-	./hw02 inputs/2017 > output17
-	diff output17 expected/expected17
+	./hw02 inputs_char/2017 inputs_int/input2 > output17
+	diff output17 expected_char/expected17
+	diff sum_output.txt expected_int/expected2
 
 test3: hw02
-	./hw02 inputs/2018 > output18
-	diff output18 expected/expected18
+	./hw02 inputs_char/2018 inputs_int/input3 > output18
+	diff output18 expected_char/expected18
+	diff sum_output.txt expected_int/expected3
 
 test4: hw02
-	./hw02 inputs/2019 > output19
-	diff output19 expected/expected19
+	./hw02 inputs_char/2019 inputs_int/input4> output19
+	diff output19 expected_char/expected19
+	diff sum_output.txt expected_int/expected4
 
 clean: # remove all machine generated files
-	rm -f hw02 *.o output??
+	rm -f hw02 *.o output?? sum_output.txt
 
 
