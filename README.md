@@ -44,16 +44,18 @@ void printCounts(const int *counts, int size);
 
 ### **Instructions:**
 
-1. Print the counts of characters with non-zero occurrences.
-2. Display each character and its corresponding count in the format:
-   ```plaintext
-   Character: [ASCII code] Count: [count]
+1. Iterate through each index ind from 0 to size - 1 (inclusive).
+2. Check the value of counts[ind]. If counts[ind] is zero, skip printing for that index.
+3. For each valid index, print in the format:
+
+   ```p
+   "ind, onechar, counts[ind]"
    ```
-   Example output for characters 'A' and 'B':
-   ```plaintext
-   Character: 65 Count: 10
-   Character: 66 Count: 5
-   ```
+   - ind: The index of the array element.
+   - onechar: Print the character if ind corresponds to a lowercase letter ('a' to 'z') or an uppercase letter ('A' to 'Z').
+      If the index does not correspond to an alphabetic character, print a space character instead.
+   - counts[ind]: The count value for that index.
+
 
 ---
 
