@@ -2,27 +2,30 @@
 #include <stdbool.h>
 
 
-bool addFile(char * filename, int * sum)
-{
-  // You cannot assume * sum is zero. Thus, * sum needs to be set 0
-  // open a file whose name is filename for reading
-  // if fopen fails, return false. Do NOT fclose
-  // if fopen succeeds, read integers using fscan (do not use fgetc)
-  //
-  // * sum stores the result of adding all numbers from the file
-  // When no more numbers can be read, fclose, return true
-  //
-  return true;
+bool addFile(const char *filename, int *sum) {
+    FILE *file = fopen(filename, "r");
+    if (!file) {
+        return false; // Return false if file cannot be opened
+    }
+    
+    *sum = 0; 
+    int num;
+    while (fscanf(file, "%d", &num) == 1) {
+        *sum += num; // Add each integer to sum
+    }
+    
+    fclose(file); // Close the file after reading
+    return true;
 }
 
 
-
-bool writeSum(char * filename, int sum)
-{
-  // open a file whose name is filename for writing
-  // if fopen succeeds, write sum as an integer using fprintf
-  // fprintf should use one newline '\n'
-  // fclose, return true
-  //
-  return true;
+bool writeSum(const char *filename, int sum) {
+    FILE *file = fopen(filename, "w");
+    if (!file) {
+        return false; // Return false if file cannot be opened
+    }
+    
+    fprintf(file, "%d\n", sum); 
+    fclose(file); // Close the file after writing
+    return true;
 }
